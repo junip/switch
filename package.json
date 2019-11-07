@@ -1,0 +1,26 @@
+{
+  "name": "switch",
+  "version": "0.0.1",
+  "description": "A cli tool that helps you to search & switch the repository ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-junip:junipdewan/switch.git"
+  },
+  "keywords": [
+    "CLI",
+    "switch",
+    "change",
+    "directory"
+  ],
+  "author": "Junip Dewan",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^4.0.0",
+    "configstore": "^5.0.0",
+    "shelljs": "^0.8.3"
+  }
+}
