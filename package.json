@@ -3,8 +3,12 @@
   "version": "0.0.1",
   "description": "A cli tool that helps you to search & switch the repository ",
   "main": "index.js",
+  "bin": {
+    "switch": "./src/index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write ./src/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +25,11 @@
   "dependencies": {
     "commander": "^4.0.0",
     "configstore": "^5.0.0",
+    "inquirer": "^7.0.0",
+    "inquirer-autocomplete-prompt": "^1.0.1",
     "shelljs": "^0.8.3"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.0"
   }
 }
