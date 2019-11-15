@@ -1,22 +1,43 @@
 #!/usr/bin/env node
 const program = require("commander");
 const inquirer = require("inquirer");
+
+// auto complete prompt
 const autocompletePrompt = require("inquirer-autocomplete-prompt");
 inquirer.registerPrompt("autocomplete", autocompletePrompt);
+
+// configstore
 const Configstore = require("configstore");
-var shell = require("shelljs");
 const fuzzy = require("fuzzy");
+
+// child process
+
+var cp = require('child_process')
+var path = require('path')
+var os = require('os');
+
 const configStore = new Configstore("dirpathdetail");
 
 program
-  .option("-d, --directory", "Switch Repo")
+  .option("-d, --switch-directory", "Switch Directory")
   .option("-a, --add-directory", "Add Directory")
   .option("-e, --edit-directory", "Edit Directory Path")
-  .option("-c, --change-directory", "Change Directory")
+  .option("-r, ---remove-directory", "Remove Directory")
+  .option("-t, --test", "Test Command")
+
+
+// look up for directory in specfic folder.
+// check path if exists.
+//if yes then store in config store
 
 program.parse(process.argv);
 
 if (program.directory) {
+}
+
+if(program.addDirectory) {
+
+
 }
 
 if (program.addDirectory) {
@@ -57,8 +78,7 @@ if (program.addDirectory) {
 }
 
 
-if(program.changeDirectory) {
-  
+if(program.switchDirectory) {
   inquirer
     .prompt([
       {
@@ -71,13 +91,36 @@ if(program.changeDirectory) {
     ])
     .then(function(answers) {
       // assign the issue to selected user
-      console.log(answers)
+      let selectedDirectory = answers["directory"];
+      let location = configStore.get(selectedDirectory)
+      //exec('cd ' + `${location}`)
+      cp.spawn(
+        // With this variable we know we use the same shell as the one that started this process
+        process.env.SHELL,
+        {
+          // Change the cwd
+          cwd: `${location}`,
+      
+          // This makes this process "take over" the terminal
+          stdio: 'inherit',
+      
+          // If you want, you can also add more environment variables here, but you can also remove this line
+          env: { ...process.env, extra_environment: 'some value' },
+        },
+      );
+      
     });
 
 }
-
+/**
+ * Search Directroy on the fly powered by fuzzy search
+ * @param {} answers 
+ * @param {*} input 
+ */
 function searchDirectory(answers, input) {
   input = input || '' ;
+  // returns the stored directory names which is stored with its location 
+  // in configstore
   let dirName = Object.keys(configStore.all);
   return new Promise(function(resolve) {
     setTimeout(function() {
