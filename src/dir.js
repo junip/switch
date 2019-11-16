@@ -32,17 +32,20 @@ module.exports = {
     });
   },
 
-  addDirectoryPath: function() {},
+  /**
+   * Add Directory 
+   */
+  addDirectoryPath: function(path, cb) {},
 
-  removeDirectoryPath: function() {},
+  removeDirectoryPath: function(path, cb) {},
 
-  editDirectoryPath: function() {},
+  editDirectoryPath: function(path, cb) {},
 
   /**
    * Check if the directory path is valid or not
    */
 
-  checkValidPath: function(path) {},
+  checkValidPath: function(path,cb) {},
 
   /**
    * Change Directory on the base of its given file path
