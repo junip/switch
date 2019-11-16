@@ -2,7 +2,7 @@
 const program = require("commander");
 const inquirer = require("inquirer");
 
-const dir = require('./dir')
+const dir = require("./dir");
 // auto complete prompt
 const autocompletePrompt = require("inquirer-autocomplete-prompt");
 inquirer.registerPrompt("autocomplete", autocompletePrompt);
@@ -13,9 +13,9 @@ const fuzzy = require("fuzzy");
 
 // child process
 
-var cp = require('child_process')
-var path = require('path')
-var os = require('os');
+var cp = require("child_process");
+var path = require("path");
+var os = require("os");
 
 const configStore = new Configstore("dirpathdetail");
 
@@ -24,8 +24,7 @@ program
   .option("-a, --add-directory", "Add Directory")
   .option("-e, --edit-directory", "Edit Directory Path")
   .option("-r, ---remove-directory", "Remove Directory")
-  .option("-t, --test", "Test Command")
-
+  .option("-t, --test", "Test Command");
 
 // look up for directory in specfic folder.
 // check path if exists.
@@ -36,9 +35,7 @@ program.parse(process.argv);
 if (program.directory) {
 }
 
-if(program.addDirectory) {
-
-
+if (program.addDirectory) {
 }
 
 if (program.addDirectory) {
@@ -48,7 +45,8 @@ if (program.addDirectory) {
         type: "input",
         name: "dir_name",
         message: "Enter the Name of Directory you want to add",
-        validate: function(value) {``
+        validate: function(value) {
+          ``;
           return value.length ? true : "Please enter the directory Name ";
         }
       },
@@ -66,20 +64,20 @@ if (program.addDirectory) {
       let path_name, dir_name;
       path_name = result.path_name;
       dir_name = result.dir_name;
-      console.log(dir_name, path_name)
-      configStore.set({dir_name: path_name});
+      console.log(dir_name, path_name);
+      configStore.set({ dir_name: path_name });
       //Users/admin/Documents/iserve
       // if (shell.test("-d", result.path_name)) {
-        
+
       // } else {
       //   console.log("Please Enter a valid directory or directory path");
       // }
-      console.log(configStore.all)
+      console.log(configStore.all);
     });
 }
 
 // Switch Directory
-if(program.switchDirectory) {
+if (program.switchDirectory) {
   inquirer
     .prompt([
       {
@@ -93,10 +91,7 @@ if(program.switchDirectory) {
     .then(function(answers) {
       // assign the issue to selected user
       let selectedDirectory = answers["directory"];
-      let path = configStore.get(selectedDirectory)
-      dir.changeDirectory(path)
+      let path = configStore.get(selectedDirectory);
+      dir.changeDirectory(path);
     });
-
 }
-
-
