@@ -2,6 +2,7 @@
 const program = require("commander");
 const inquirer = require("inquirer");
 
+const dir = require('./dir')
 // auto complete prompt
 const autocompletePrompt = require("inquirer-autocomplete-prompt");
 inquirer.registerPrompt("autocomplete", autocompletePrompt);
@@ -77,7 +78,7 @@ if (program.addDirectory) {
     });
 }
 
-
+// Switch Directory
 if(program.switchDirectory) {
   inquirer
     .prompt([
@@ -85,52 +86,17 @@ if(program.switchDirectory) {
         type: "autocomplete",
         name: "directory",
         message: "Search for the directory you want to change",
-        source: searchDirectory,
+        source: dir.searchDirectory,
         pageSize: 5
       }
     ])
     .then(function(answers) {
       // assign the issue to selected user
       let selectedDirectory = answers["directory"];
-      let location = configStore.get(selectedDirectory)
-      //exec('cd ' + `${location}`)
-      cp.spawn(
-        // With this variable we know we use the same shell as the one that started this process
-        process.env.SHELL,
-        {
-          // Change the cwd
-          cwd: `${location}`,
-      
-          // This makes this process "take over" the terminal
-          stdio: 'inherit',
-      
-          // If you want, you can also add more environment variables here, but you can also remove this line
-          env: { ...process.env, extra_environment: 'some value' },
-        },
-      );
-      
+      let path = configStore.get(selectedDirectory)
+      dir.changeDirectory(path)
     });
 
 }
-/**
- * Search Directroy on the fly powered by fuzzy search
- * @param {} answers 
- * @param {*} input 
- */
-function searchDirectory(answers, input) {
-  input = input || '' ;
-  // returns the stored directory names which is stored with its location 
-  // in configstore
-  let dirName = Object.keys(configStore.all);
-  return new Promise(function(resolve) {
-    setTimeout(function() {
-      var fuzzyResult = fuzzy.filter(input, dirName);
-      resolve(
-        fuzzyResult.map(function(el) {
-          return el.original
-        })
-      );
-    }, 2000);
-  });
-}
+
 
