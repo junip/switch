@@ -1,7 +1,7 @@
 {
   "name": "switch",
   "version": "0.0.1",
-  "description": "A cli tool that helps you to search & switch the repository ",
+  "description": "A cli tool that helps tp switch between workspaces on the fly 🚀",
   "main": "index.js",
   "bin": {
     "switch": "./src/index.js"
@@ -20,7 +20,7 @@
     "change",
     "directory"
   ],
-  "author": "Junip Dewan",
+  "author": "Junip Dewan <junipd2@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "chalk": "^3.0.0",

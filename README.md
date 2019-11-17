@@ -13,8 +13,16 @@ While working in a project we come across multiple project dependencies. So, we 
 
 So the goal of this project is to minimize the effort of workspace change with tab's autocomplete or remembering project path. Meanwhile it gives you the flexibility to instantly switch among your dependent project/directory and do the necessary stuff in your terminal.
 
-Forget typing `cd ..` & tab autocompletion.
+### Forget typing `cd ..` & tab autocompletion or adding aliases for directories.
 
+
+![Alt Text](assets/switch-demo.gif)
+
+## Commands
+
+<p align="center">
+<img src="assets/switch-commands.png">
+</p>
 
 ## Install using NPM
 
@@ -45,19 +53,9 @@ npm install
 
 ### Create the symlink. This command will help you execute `switch` commands at global level 
 
-
 ```
 npm link or sudo npm link
 ```
-
-
-
-
-
-
-
-
-
 
 
 ## Contribution
