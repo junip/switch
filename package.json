@@ -23,6 +23,7 @@
   "author": "Junip Dewan",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^3.0.0",
     "commander": "^4.0.0",
     "configstore": "^5.0.0",
     "fuzzy": "^0.1.3",
