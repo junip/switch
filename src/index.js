@@ -1,42 +1,22 @@
 #!/usr/bin/env node
 const program = require("commander");
+const fuzzy = require("fuzzy");
 const inquirer = require("inquirer");
-
-const dir = require("./dir");
-// auto complete prompt
 const autocompletePrompt = require("inquirer-autocomplete-prompt");
 inquirer.registerPrompt("autocomplete", autocompletePrompt);
-
-// configstore
 const Configstore = require("configstore");
-const fuzzy = require("fuzzy");
+const configStore = new Configstore("directorydetails");
 
-// child process
+const dir = require("./dir");
 
-var cp = require("child_process");
-var path = require("path");
-var os = require("os");
-
-const configStore = new Configstore("dirpathdetail");
 
 program
   .option("-d, --switch-directory", "Switch Directory")
   .option("-a, --add-directory", "Add Directory")
   .option("-e, --edit-directory", "Edit Directory Path")
-  .option("-r, ---remove-directory", "Remove Directory")
-  .option("-t, --test", "Test Command");
-
-// look up for directory in specfic folder.
-// check path if exists.
-//if yes then store in config store
+  .option("-r, ---remove-directory", "Remove Directory");
 
 program.parse(process.argv);
-
-if (program.directory) {
-}
-
-if (program.addDirectory) {
-}
 
 if (program.addDirectory) {
   inquirer
@@ -46,7 +26,6 @@ if (program.addDirectory) {
         name: "dir_name",
         message: "Enter the Name of Directory you want to add",
         validate: function(value) {
-          ``;
           return value.length ? true : "Please enter the directory Name ";
         }
       },
@@ -55,24 +34,24 @@ if (program.addDirectory) {
         name: "path_name",
         message: "Add your directory Path",
         validate: function(value) {
-          return value.length ? true : `Please enter valid directory path`;
+          if(value.length) {
+            if(dir.isExists(value)) {
+              return dir.isDirectory(value) ? true : "Please enter a valid directory path. The given path is not a directory"
+            } else {
+              return "Please enter a valid path. The given path doesnot exist"
+            } 
+          } else {
+            return "Please enter directory path";
+          }
         }
       }
     ])
     .then(answers => {
-      let result = JSON.stringify(answers, null, "  ");
-      let path_name, dir_name;
-      path_name = result.path_name;
-      dir_name = result.dir_name;
-      console.log(dir_name, path_name);
-      configStore.set({ dir_name: path_name });
-      //Users/admin/Documents/iserve
-      // if (shell.test("-d", result.path_name)) {
-
-      // } else {
-      //   console.log("Please Enter a valid directory or directory path");
-      // }
-      console.log(configStore.all);
+      let path, directory;
+      path = answers["path_name"]
+      directory = answers["dir_name"]
+      dir.addDirectoryPath(path, directory);
+      console.log("Directory Added")
     });
 }
 

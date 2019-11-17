@@ -5,9 +5,12 @@
 
 // configstore
 const Configstore = require("configstore");
-const configStore = new Configstore("dirpathdetail");
+const configStore = new Configstore("directorydetails");
 const fuzzy = require("fuzzy");
 const cp = require("child_process");
+
+// node
+const fs = require('fs');
 
 module.exports = {
   /**
@@ -35,17 +38,36 @@ module.exports = {
   /**
    * Add Directory 
    */
-  addDirectoryPath: function(path, cb) {},
+  addDirectoryPath: function(path, cb) {
+    configStore.set(`${directory}`,`${path}`);
+  },
 
-  removeDirectoryPath: function(path, cb) {},
+  removeDirectoryPath: function(path, cb) {
 
-  editDirectoryPath: function(path, cb) {},
+  },
+
+  editDirectoryPath: function(path, cb) {
+
+  },
 
   /**
-   * Check if the directory path is valid or not
+   * returns true if the given path is a directory
+   * @returns Boolean 
+   * @param {*} path 
    */
+  isDirectory: function(path) {
+    return fs.lstatSync.isDirectory(path)
+  },
 
-  checkValidPath: function(path,cb) {},
+  /**
+   * returns true if the given path exists.
+   * @returns Boolean 
+   * @param {*} path 
+   * 
+   */
+  isExists(path) {
+    return fs.existsSync(path)
+  },
 
   /**
    * Change Directory on the base of its given file path
