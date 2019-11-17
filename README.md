@@ -3,18 +3,20 @@
 
 ![made with nodejs](https://img.shields.io/badge/madewith-node.js-green.svg) [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![license](https://img.shields.io/github/license/visionmedia/superagent.svg)](LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](http://makeapullrequest.com)
 
+<p align="center">
+<img src="assets/switch.png"  width=180 >
+</p>
 
 ## Philosophy
 
-We come across multiple project dependency in doing one project. So, we need to switch among dependent projects and its becomes heectic to change workspace or remember your workspace path. 
+While working in a project we come across multiple project dependencies. So, we often need to switch among dependent projects and its becomes hectic to change workspace or remember your workspace path so that you can instanly change to a different workspace from one workspace.
 
-So the goal of this project is to minimize the process of change workspaces with tab's autocomplete or remembering project path. Meanwhile it gives you the flexibility to instantly switch among your dependent project/directory and do the necessary staff in your terminal.
+So the goal of this project is to minimize the effort of workspace change with tab's autocomplete or remembering project path. Meanwhile it gives you the flexibility to instantly switch among your dependent project/directory and do the necessary stuff in your terminal.
+
+Forget typing `cd ..` & tab autocompletion.
 
 
-
-<img src="assets/switch.png" width=150>
-
-## Install Using NPM
+## Install using NPM
 
 You can use directly install the package using 
 [NPM](https://www.npmjs.com/package/switch)  or  [YARN](https://yarnpkg.com/en/package/switch)
