@@ -41,13 +41,21 @@ module.exports = {
   addDirectoryPath: function(path, cb) {
     configStore.set(`${directory}`,`${path}`);
   },
-
-  removeDirectoryPath: function(path, cb) {
-
-  },
-
-  editDirectoryPath: function(path, cb) {
-
+  /**
+   * validate the directory path input & accordingly returns
+   * the error message
+   * @param {*} value 
+   */
+  validateDirectoryPath(value) {
+    if(value.length) {
+      if(module.exports.isExists(value)) {
+        return module.exports.isDirectory(value) ? true : "Please enter a valid directory path. The given path is not a directory"
+      } else {
+        return "Please enter a valid path. The given path doesnot exist"
+      } 
+    } else {
+      return "Please enter directory path";
+    }
   },
 
   /**

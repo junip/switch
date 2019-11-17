@@ -6,6 +6,7 @@ const autocompletePrompt = require("inquirer-autocomplete-prompt");
 inquirer.registerPrompt("autocomplete", autocompletePrompt);
 const Configstore = require("configstore");
 const configStore = new Configstore("directorydetails");
+const chalk = require('chalk');
 
 const dir = require("./dir");
 
@@ -18,6 +19,37 @@ program
 
 program.parse(process.argv);
 
+
+// Switch Directory
+if (program.switchDirectory) {
+  let dirs = Object.keys(configStore.all);
+  if(dirs.length > 0) {
+    inquirer
+    .prompt([
+      {
+        type: "autocomplete",
+        name: "directory",
+        message: "Search for the directory you want to change",
+        source: dir.searchDirectory,
+        pageSize: 5
+      }
+    ])
+    .then(function(answers) {
+      let selectedDirectory = answers["directory"];
+      let path = configStore.get(selectedDirectory);
+      dir.changeDirectory(path);
+    });
+  } else {
+    console.log(chalk.green(
+      'Please add directories first that you frequently switch.' + ' Use ' +
+      chalk.blue.underline.bold('switch -a ') +
+      'command to add directories. '
+    ));
+  }
+}
+
+
+// 2. Add Directory
 if (program.addDirectory) {
   inquirer
     .prompt([
@@ -55,22 +87,53 @@ if (program.addDirectory) {
     });
 }
 
-// Switch Directory
-if (program.switchDirectory) {
+
+// 3. Edit Directory
+
+if(program.editDirectory) {
   inquirer
-    .prompt([
-      {
-        type: "autocomplete",
-        name: "directory",
-        message: "Search for the directory you want to change",
-        source: dir.searchDirectory,
-        pageSize: 5
+  .prompt([
+    {
+      type: "autocomplete",
+      name: "directory",
+      message: "Search for the directory you want to EDIT",
+      source: dir.searchDirectory,
+      pageSize: 5
+    },
+    {
+      type: "input",
+      name: "dir_name",
+      message: "Enter the Name of Directory you want to add",
+      validate: function(value) {
+        return value.length ? true : "Please enter the directory Name ";
       }
-    ])
-    .then(function(answers) {
-      // assign the issue to selected user
-      let selectedDirectory = answers["directory"];
-      let path = configStore.get(selectedDirectory);
-      dir.changeDirectory(path);
-    });
+    },
+
+  ])
+  .then(function(answers) {
+    let selectedDirectory = answers["directory"];
+    let path = configStore.get(selectedDirectory);
+    dir.changeDirectory(path);
+  });
+}
+
+
+//4. Remove Directory
+if(program.removeDirectory) {
+  inquirer
+  .prompt([
+    {
+      type: "autocomplete",
+      name: "directory",
+      message: "Search for the directory you want to REMOVE",
+      source: dir.searchDirectory,
+      pageSize: 5
+    }
+  ])
+  .then(function(answers) {
+    let selectedDirectory = answers["directory"];
+    configStore.delete(selectedDirectory);
+    console.log(chalk.bgRed.bold(`Removed ${selectedDirectory} successfully`))
+  });
+
 }
