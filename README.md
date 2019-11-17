@@ -25,16 +25,16 @@ You can use directly install the package using
 [NPM](https://www.npmjs.com/package/switch)  or  [YARN](https://yarnpkg.com/en/package/switch)
 
 ```sh
- npm install -g switch 
+ npm install -g switchd
 ```
 ```   
- yarn add switch
+ yarn add switchd
 ```
 
 ### use the below command to get started
 
 ```sh
- npx switch
+ npx switchd
 ```
 
 ## By Cloning the repository
