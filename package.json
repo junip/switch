@@ -1,5 +1,5 @@
 {
-  "name": "switch",
+  "name": "switchd",
   "version": "0.0.1",
   "description": "A cli tool that helps tp switch between workspaces on the fly 🚀",
   "main": "index.js",
