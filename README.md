@@ -15,13 +15,8 @@ So the goal of this project is to minimize the effort of workspace change with t
 
 ### Forget typing `cd ..` & tab autocompletion or adding aliases for directories.
 
-
-![Alt Text](assets/switch-demo.gif)
-
-## Commands
-
 <p align="center">
-<img src="assets/switch-commands.png">
+<img src="assets/switch.gif">
 </p>
 
 ## Install using NPM

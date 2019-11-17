@@ -1,7 +1,7 @@
 {
   "name": "switchd",
-  "version": "0.0.1",
-  "description": "A cli tool that helps tp switch between workspaces on the fly 🚀",
+  "version": "0.0.3",
+  "description": "A cli tool that helps to switch between workspaces on the fly 🚀",
   "main": "index.js",
   "bin": {
     "switch": "./src/index.js"
