@@ -38,7 +38,7 @@ module.exports = {
   /**
    * Add Directory 
    */
-  addDirectoryPath: function(path, cb) {
+  addDirectoryPath: function(directory, path) {
     configStore.set(`${directory}`,`${path}`);
   },
   /**
@@ -64,7 +64,7 @@ module.exports = {
    * @param {*} path 
    */
   isDirectory: function(path) {
-    return fs.lstatSync.isDirectory(path)
+    return fs.lstatSync(path).isDirectory() 
   },
 
   /**
