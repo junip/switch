@@ -1,7 +1,7 @@
 # switch
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)]() [![forthebadge](https://forthebadge.com/images/badges/built-with-swag.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/powered-by-oxygen.svg)](https://forthebadge.com)
 
-![made with nodejs](https://img.shields.io/badge/madewith-node.js-green.svg) [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![license](https://img.shields.io/github/license/visionmedia/superagent.svg)](LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](http://makeapullrequest.com)
+![npm](https://img.shields.io/npm/dm/switchd) ![made with nodejs](https://img.shields.io/badge/madewith-node.js-green.svg) [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![license](https://img.shields.io/github/license/visionmedia/superagent.svg)](LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](http://makeapullrequest.com)
 
 <div align="center">
 <img src="assets/switch-icon.png"  width=180 >
@@ -37,7 +37,7 @@ You can use directly install the package using
  npx switchd
 ```
 
-## By Cloning the repository
+## Or By Cloning the repository
 
 Install all dependency 
 
@@ -51,6 +51,32 @@ npm install
 ```
 npm link or sudo npm link
 ```
+
+## After install  
+
+### Run the following
+
+To get the available commands
+```
+switch --help 
+```
+
+![](assets/switch-commands.png)
+
+You need to add directory name & directory path first to start with.While adding directory give the full path using `pwd`
+
+```
+switch -a
+```
+![](assets/add-directory.png)
+
+After adding switch to any workspace on the fly
+
+```
+switch -d
+```
+
+![](assets/switch-dir.png)
 
 
 ## Contribution
