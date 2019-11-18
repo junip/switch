@@ -3,9 +3,9 @@
 
 ![made with nodejs](https://img.shields.io/badge/madewith-node.js-green.svg) [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![license](https://img.shields.io/github/license/visionmedia/superagent.svg)](LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](http://makeapullrequest.com)
 
-<p align="center">
-<img src="assets/switch.png"  width=180 >
-</p>
+<div align="center">
+<img src="assets/switch-icon.png"  width=180 >
+</div>
 
 ## Philosophy
 

@@ -1,6 +1,6 @@
 {
   "name": "switchd",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A cli tool that helps to switch between workspaces on the fly 🚀",
   "main": "index.js",
   "bin": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com-junip:junipdewan/switch.git"
+    "url": "https://github.com/junipdewan/switch"
   },
   "keywords": [
     "CLI",
@@ -21,6 +21,9 @@
     "directory"
   ],
   "author": "Junip Dewan <junipd2@gmail.com>",
+  "publishConfig": { 
+    "registry": "https://npm.pkg.github.com/" 
+  },
   "license": "MIT",
   "dependencies": {
     "chalk": "^3.0.0",
