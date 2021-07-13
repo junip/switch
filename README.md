@@ -7,16 +7,16 @@
 <img src="assets/switch-icon.png"  width=180 >
 </div>
 
-## Philosophy
+## Motivation
 
-While working in a project we come across multiple project dependencies. So, we often need to switch among dependent projects and its becomes hectic to change workspace or remember your workspace path so that you can instanly change to a different workspace from one workspace.
+We often need to switch among different projects and it becomes hectic to change workspace or remember your workspace path so that you can instanly change to a different workspace from one workspace.
 
 So the goal of this project is to minimize the effort of workspace change with tab's autocomplete or remembering project path. Meanwhile it gives you the flexibility to instantly switch among your dependent project/directory and do the necessary stuff in your terminal.
 
 ### Forget typing `cd ..` & tab autocompletion or adding aliases for directories.
 
 <p align="center">
-<img src="assets/switch.gif">
+<img src="assets/switch.gif" height="300" width="340">
 </p>
 
 ## Install using NPM
